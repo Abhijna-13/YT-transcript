@@ -1,4 +1,4 @@
-export const DEFAULT_TRANSCRIPT_ACTOR = 'scraper-mind~youtube-transcript-scraper'
+export const DEFAULT_TRANSCRIPT_ACTOR = 'johnvc~YoutubeTranscripts'
 
 export function normalizeTranscript(items) {
   if (!Array.isArray(items)) return ''
@@ -45,10 +45,9 @@ export async function runTranscriptExtraction({ actorId = DEFAULT_TRANSCRIPT_ACT
   }
 
   const input = {
-    videoUrl: youtubeUrl,
-    language: 'en',
-    startUrls: [{ url: youtubeUrl }],
-    proxyConfiguration: { useApifyProxy: false },
+    youtube_url: youtubeUrl,
+    languages: ['en'],
+    output_formats: ['text'],
   }
 
   try {
