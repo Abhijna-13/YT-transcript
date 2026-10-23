@@ -1,4 +1,4 @@
-const APIFY_ACTOR = import.meta.env.VITE_APIFY_ACTOR || 'scraper-mind~youtube-transcript-scraper'
+const APIFY_ACTOR = import.meta.env.VITE_APIFY_ACTOR || 'johnvc~YoutubeTranscripts'
 const LOCAL_TOKEN = import.meta.env.VITE_APIFY_TOKEN
 
 function normalizeTranscript(items) {
@@ -49,9 +49,9 @@ async function extractViaBrowserToken(youtubeUrl) {
   }
 
   const input = {
-    videoUrl: youtubeUrl,
-    language: 'en',
-    startUrls: [{ url: youtubeUrl }],
+    youtube_url: youtubeUrl,
+    languages: ['en'],
+    output_formats: ['text'],
   }
   const runResponse = await fetch(
     `https://api.apify.com/v2/acts/${encodeURIComponent(APIFY_ACTOR)}/runs?token=${LOCAL_TOKEN}`,
